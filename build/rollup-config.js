@@ -34,7 +34,7 @@ const config = {
 		}
 	],
 	plugins: [
-		release ? json() : undefined
+		json()
 	]
 };
 
