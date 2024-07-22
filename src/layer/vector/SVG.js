@@ -42,6 +42,28 @@ export const SVG = Renderer.extend({
 		// makes it possible to click through svg root; we'll reset it back in individual paths
 		this._container.setAttribute('pointer-events', 'none');
 
+		// adding this in library consumer side adds unexpected fragility
+		const defsEl = document.createElement('defs');
+		this._container.prepend(defsEl);
+		console.log('options', this.options);
+		// for (const patternName in patterns) {
+		// 	const patternUrl = patterns[patternName];
+		// 	const patternEl = document.createElement("pattern");
+		// 	const imageEl = document.createElement("image");
+		// 	patternEl.appendChild(imageEl);
+		// 	defsEl.appendChild(patternEl);
+		// 	patternEl.id = patternName;
+		// 	patternEl.setAttribute("patternUnits", "userSpaceOnUse");
+		// 	patternEl.setAttribute("width", 600);
+		// 	patternEl.setAttribute("height", 450);
+		// 	imageEl.href = patternUrl;
+		// 	imageEl.setAttribute("xlink:href", patternUrl);
+		// 	imageEl.setAttribute("width", 600);
+		// 	imageEl.setAttribute("height", 450);
+		// 	imageEl.setAttribute("x", 0);
+		// 	imageEl.setAttribute("y", 0);
+		// }
+
 		this._rootGroup = create('g');
 		this._container.appendChild(this._rootGroup);
 	},
