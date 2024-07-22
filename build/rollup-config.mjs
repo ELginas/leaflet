@@ -1,7 +1,6 @@
 import json from '@rollup/plugin-json';
 import {readFileSync} from 'node:fs';
 import rollupGitVersion from 'rollup-plugin-git-version';
-import {simpleGit} from 'simple-git';
 
 // TODO: Replace this with a regular import when ESLint adds support for import assertions.
 // See: https://rollupjs.org/guide/en/#importing-packagejson
@@ -39,16 +38,7 @@ const config = {
 export default config;
 
 async function getVersion() {
-	// Skip the git branch+rev in the banner when doing a release build
-	if (release) {
-		return pkg.version;
-	}
-
-	const git = simpleGit();
-	const branch = (await git.branch()).current;
-	const commit = await git.revparse(['--short', 'HEAD']);
-
-	return `${pkg.version}+${branch}.${commit}`;
+	return 'github-build';
 }
 
 export function createBanner(version) {
