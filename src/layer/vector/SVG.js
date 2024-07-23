@@ -66,12 +66,11 @@ export const SVG = Renderer.extend({
 			const imageEl = document.createElementNS(svgNS, 'image');
 			patternEl.appendChild(imageEl);
 			defsEl.appendChild(patternEl);
-			patternEl.id = patternName;
+			patternEl.setAttribute('id', patternName);
 			patternEl.setAttribute('patternUnits', 'userSpaceOnUse');
 			patternEl.setAttribute('width', 600);
 			patternEl.setAttribute('height', 450);
-			imageEl.href = patternUrl;
-			imageEl.setAttribute('xlink:href', patternUrl);
+			imageEl.setAttribute('href', patternUrl);
 			imageEl.setAttribute('width', 600);
 			imageEl.setAttribute('height', 450);
 			imageEl.setAttribute('x', 0);
