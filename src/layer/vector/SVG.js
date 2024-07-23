@@ -54,15 +54,16 @@ export const SVG = Renderer.extend({
 		this._container.setAttribute('pointer-events', 'none');
 
 		// adding this in library consumer side adds unexpected fragility
-		const defsEl = document.createElement('defs');
+		const svgNS = 'http://www.w3.org/2000/svg';
+		const defsEl = document.createElementNS(svgNS, 'defs');
 		this._container.prepend(defsEl);
 		console.log('options', this.options);
 
 		const patterns = this.options?.patterns;
 		for (const patternName in patterns) {
 			const patternUrl = patterns[patternName];
-			const patternEl = document.createElement('pattern');
-			const imageEl = document.createElement('image');
+			const patternEl = document.createElementNS(svgNS, 'pattern');
+			const imageEl = document.createElementNS(svgNS, 'image');
 			patternEl.appendChild(imageEl);
 			defsEl.appendChild(patternEl);
 			patternEl.id = patternName;
