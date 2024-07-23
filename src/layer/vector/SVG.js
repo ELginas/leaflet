@@ -57,7 +57,6 @@ export const SVG = Renderer.extend({
 		const svgNS = 'http://www.w3.org/2000/svg';
 		const defsEl = document.createElementNS(svgNS, 'defs');
 		this._container.prepend(defsEl);
-		console.log('options', this.options);
 
 		const patterns = this.options?.patterns;
 		for (const patternName in patterns) {
@@ -68,11 +67,11 @@ export const SVG = Renderer.extend({
 			defsEl.appendChild(patternEl);
 			patternEl.setAttribute('id', patternName);
 			patternEl.setAttribute('patternUnits', 'userSpaceOnUse');
-			patternEl.setAttribute('width', 600);
-			patternEl.setAttribute('height', 450);
+			patternEl.setAttribute('width', this.options.patternWidth);
+			patternEl.setAttribute('height', this.options.patternHeight);
 			imageEl.setAttribute('href', patternUrl);
-			imageEl.setAttribute('width', 600);
-			imageEl.setAttribute('height', 450);
+			imageEl.setAttribute('width', this.options.patternWidth);
+			imageEl.setAttribute('height', this.options.patternHeight);
 			imageEl.setAttribute('x', 0);
 			imageEl.setAttribute('y', 0);
 		}
